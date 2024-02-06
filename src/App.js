@@ -1,4 +1,16 @@
+import { useState } from "react";
+import "./index.css";
+import BookList from "./components/BookList";
+import BookCreate from "./components/BookCreate";
+
 const App = () => {
-    return <div>App</div>;
+    const [books, setBooks] = useState([]);
+
+    return (
+        <div>
+            <BookList />
+            <BookCreate />
+        </div>
+    );
 };
 export default App;
