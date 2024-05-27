@@ -16,7 +16,7 @@ const App = () => {
     const editBookById = async (id, newTitle) => {
         // Make put request to json server
         const res = await axios.put(`http://localhost:3001/books/${id}`, {
-            title: newTitle
+            title: newTitle,
         });
 
         const updatedBooks = books.map((book) => {
@@ -43,17 +43,17 @@ const App = () => {
     const createBook = async (title) => {
         // Make post request to json server
         const res = await axios.post("http://localhost:3001/books", {
-            title
-        })
+            title,
+        });
         // Receive response that gives back book with its id
-        const updatedBooks = [...books,res.data];
+        const updatedBooks = [...books, res.data];
         // Take response and add to book state
         setBooks(updatedBooks);
     };
 
     useEffect(() => {
         fetchBooks();
-    },[]);
+    }, []);
 
     return (
         <div className="app">
