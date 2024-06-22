@@ -6,12 +6,12 @@ const BooksContext = createContext();
 function Provider({ children }) {
     const [books, setBooks] = useState([]);
 
-    const fetchBooks = async () => {
+    const fetchBooks = useCallback(async () => {
         // Make get request to json server
         const res = await axios.get("http://localhost:3001/books");
         // Response gives back books that we now use set to books state
         setBooks(res.data);
-    };
+    }, []);
 
     const editBookById = async (id, newTitle) => {
         // Make put request to json server
